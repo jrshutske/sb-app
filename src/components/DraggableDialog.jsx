@@ -26,45 +26,43 @@ class DraggableDialog extends Component {
 
   }
 
-render() {
-  const {open, rowData, handleClose} = this.props;
-  console.log(rowData)
-  
-  const data = Object.entries(rowData).map(([key,value])=>{
+  render() {
+    const {open, rowData, handleClose} = this.props;
+    console.log(rowData)
+    
+    const data = Object.entries(rowData).map(([key,value])=>{
+      return (
+        key !== "tableData" && 
+        <React.Fragment key={key}>
+          {key} : {value} <br />
+        </React.Fragment>
+      );
+    })
     return (
-      key !== "tableData" && 
-      <React.Fragment key={key}>
-        {key} : {value} <br />
+      <React.Fragment>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          PaperComponent={PaperComponent}
+          aria-labelledby="draggable-dialog-title"
+        >
+          <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
+            {rowData.displayname}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              {data}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
       </React.Fragment>
     );
-  })
-  return (
-    <React.Fragment>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        PaperComponent={PaperComponent}
-        aria-labelledby="draggable-dialog-title"
-      >
-        <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
-          {rowData.displayname}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            {data}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </React.Fragment>
-  );
-
-}
-  
+  }
 }
 
 export default DraggableDialog;

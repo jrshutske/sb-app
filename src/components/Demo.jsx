@@ -5,6 +5,7 @@ import DemoTable from './DemoTable';
 import DataCard from './DataCard';
 import DraggableDialog from './DraggableDialog';
 import { ClipLoader } from 'react-spinners';
+import Grow from "@material-ui/core/Grow";
 
 const switchColumns = (type) => {
   switch(type) {
@@ -95,6 +96,9 @@ class Demo extends Component {
 
   render() {
     const { computers, users, activeCard, columns, rowData, open } = this.state;
+    let data;
+    if (activeCard === "Computers") {data = computers}
+    if (activeCard === "Users") {data = users}
     console.log('render')
     return (
       <React.Fragment>
@@ -128,21 +132,13 @@ class Demo extends Component {
           />
         }
         </Grid>
-        { activeCard === "Computers" && 
+        { activeCard && 
           <DemoTable 
             columns={columns} 
             activeCard={activeCard} 
-            data={computers}
+            data={data}
             loadDemoData={this.loadDemoData}
-          /> 
-        }
-        { activeCard === "Users" && 
-          <DemoTable 
-            columns={columns} 
-            activeCard={activeCard} 
-            data={users}
-            loadDemoData={this.loadDemoData}
-          /> 
+          />
         }
         { open && 
           <DraggableDialog 
