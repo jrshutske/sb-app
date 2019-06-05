@@ -6,14 +6,28 @@ import DataCard from './DataCard';
 import DraggableDialog from './DraggableDialog';
 import { ClipLoader } from 'react-spinners';
 
-// import NumericLabel from 'react-pretty-numbers';
-
+const switchColumns = (type) => {
+  switch(type) {
+    case 'Computers':
+      return [
+                { title: 'Display Name', field: 'displayname'  },
+                { title: 'OS', field: 'os' },
+                { title: 'OS Version', field: 'osVersion' },
+              ] 
+    case 'Users':
+      return [
+                { title: 'Display Name', field: 'displayname'  },
+                { title: 'Email', field: 'email' },
+                { title: 'Last Logon', field: 'lastLogon' },
+              ] 
+    default:
+  } 
+}
 
 class Demo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      validFetch: false,
       computers: null,
       users: null,
       activeCard: null,
@@ -46,8 +60,7 @@ class Demo extends Component {
       getUsers.then(function(usersData) {
         context.setState({
           computers: computersData,
-          users: usersData,
-          validFetch: true
+          users: usersData
         })
       }).catch((err) => console.error(err));
     }).catch((err) => console.error(err));
@@ -56,22 +69,14 @@ class Demo extends Component {
   onComputersClick() {
     this.setState({ 
       activeCard: "Computers",
-      columns: [
-        { title: 'Display Name', field: 'displayname'  },
-        { title: 'OS', field: 'os' },
-        { title: 'OS Version', field: 'osVersion' },
-      ] 
+      columns: switchColumns('Computers')
     }); 
   }
 
   onUsersClick() {
     this.setState({ 
       activeCard: "Users",
-      columns:[
-        { title: 'Display Name', field: 'displayname'  },
-        { title: 'Email', field: 'email' },
-        { title: 'Last Logon', field: 'lastLogon' },
-      ] 
+      columns:switchColumns('Users')
     });
   }
 
@@ -89,36 +94,40 @@ class Demo extends Component {
   }
 
   render() {
-    const { computers, users, activeCard, columns, rowData, open, validFetch } = this.state;
+    const { computers, users, activeCard, columns, rowData, open } = this.state;
     console.log('render')
     return (
       <React.Fragment>
-        {validFetch 
-          ? 
-            <Grid container  spacing={2} justify="center">
-              <DataCard
-                title={"Computers"}
-                icon={"computer"}
-                count={computers.length}
-                onClick={(e)=>this.onComputersClick(e)}
-              />
-              <DataCard
-                title={"Users"}
-                icon={"users"}
-                count={users.length}
-                onClick={(e)=>this.onUsersClick(e)}
-              />
-            </Grid>
-          :
-            <Grid container  spacing={2} justify="center">
-              <ClipLoader
-                sizeUnit={"px"}
-                size={150}
-                color={'white'}
-                loading={!this.state.validFetch}
-              />
-            </Grid>
+        <Grid container  spacing={2} justify="center">
+        {computers 
+          ? <DataCard
+              title={"Computers"}
+              icon={"computer"}
+              count={computers.length}
+              onClick={(e)=>this.onComputersClick(e)}
+            />
+          : <ClipLoader
+              sizeUnit={"px"}
+              size={150}
+              color={'white'}
+              loading={!this.state.validFetch}
+            />
         }
+        { users 
+        ? <DataCard
+            title={"Users"}
+            icon={"person"}
+            count={users.length}
+            onClick={(e)=>this.onUsersClick(e)}
+          />
+        :<ClipLoader
+            sizeUnit={"px"}
+            size={150}
+            color={'white'}
+            loading={!this.state.validFetch}
+          />
+        }
+        </Grid>
         { activeCard === "Computers" && 
           <DemoTable 
             columns={columns} 
