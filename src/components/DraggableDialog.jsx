@@ -32,7 +32,10 @@ render() {
   
   const data = Object.entries(rowData).map(([key,value])=>{
     return (
-        key !== "tableData" && <p>{key} : {value && value.toString()}</p>
+      key !== "tableData" && 
+      <React.Fragment key={key}>
+        {key} : {value} <br />
+      </React.Fragment>
     );
   })
   return (
