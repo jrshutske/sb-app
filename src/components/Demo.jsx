@@ -5,7 +5,6 @@ import DemoTable from './DemoTable';
 import DataCard from './DataCard';
 import DraggableDialog from './DraggableDialog';
 import { ClipLoader } from 'react-spinners';
-import Grow from "@material-ui/core/Grow";
 
 const switchColumns = (type) => {
   switch(type) {

@@ -8,8 +8,6 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import grey from '@material-ui/core/colors/grey';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 import { ThemeProvider } from '@material-ui/styles';
-
-
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -22,7 +20,6 @@ const theme = createMuiTheme({
   spacing: 4,
 });
 
-
 function App() {
   return (
     <Router>
@@ -34,7 +31,6 @@ function App() {
         rel="stylesheet"
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
       />
-
       <ThemeProvider theme={theme}>
         <AppBar position="static" color="primary">
           <Toolbar>
@@ -43,7 +39,7 @@ function App() {
                 Home
               </Link>
             </Typography>
-            |
+            ||
             <Typography variant="h6" color="inherit">
               <Link to="/demo/" style={{ textDecoration: 'none', color: 'white' }}>
                 Demo
@@ -54,7 +50,6 @@ function App() {
         <br />
         <Route path="/" exact component={Home} />
         <Route path="/demo/" component={Demo} />
-
       </ThemeProvider>
     </Router>
   );

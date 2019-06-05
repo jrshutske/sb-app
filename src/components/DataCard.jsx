@@ -9,7 +9,6 @@ import Grid from '@material-ui/core/Grid';
 import Icon from '@material-ui/core/Icon';
 import NumericLabel from 'react-pretty-numbers';
 import Grow from "@material-ui/core/Grow";
-import { makeStyles } from '@material-ui/core/styles';
 
 const DataCard = (props) => {
   const { title, count, icon, onClick } = props;
