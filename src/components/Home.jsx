@@ -40,7 +40,7 @@ export default function Home() {
                   />
                   <CardContent>
                     <Typography color="textSecondary">
-                      A simple react and material ui demo for StealthBits.
+                      A simple react and material ui demo for STEALTHbits.
                     </Typography>
                   </CardContent>
                 </Link>
