@@ -1,4 +1,8 @@
-This project was created with to demonstrate working knowledge of React.
+This project was created for STEALTHbits to demonstrate a working knowledge of React.    
+
+The goal was to create a single page react application that fetched data from a [swagger.io](https://swagger.io/) endpoint and display it to two tables.    
+
+These tables were to have multiple features, such as: pagination, adjustable page length, and the ability to click on a row to display more information.
 
 ## How to run this project
 
