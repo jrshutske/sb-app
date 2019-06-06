@@ -3,6 +3,7 @@ import React from "react";
 import MaterialTable from 'material-table';
 import Grid from '@material-ui/core/Grid';
 import Grow from "@material-ui/core/Grow";
+import PropTypes from "prop-types";
 
 const DemoTable = (props) => {
   const { activeCard, columns, data } = props;
@@ -28,5 +29,17 @@ const DemoTable = (props) => {
     </Grid>
   );
 }
+
+DemoTable.propTypes = {
+  activeCard: PropTypes.string,
+  columns: PropTypes.arrayOf(PropTypes.object),
+  data: PropTypes.arrayOf(PropTypes.object)
+};
+
+DemoTable.defaultProps = {
+  activeCard: null,
+  columns: null,
+  data: null
+};
 
 export default DemoTable;

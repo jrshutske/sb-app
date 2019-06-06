@@ -9,23 +9,27 @@ import Grid from '@material-ui/core/Grid';
 import Icon from '@material-ui/core/Icon';
 import NumericLabel from 'react-pretty-numbers';
 import Grow from "@material-ui/core/Grow";
+import PropTypes from "prop-types";
 
 const DataCard = (props) => {
   const { title, count, icon, onClick } = props;
   return (
-    <Grid item xs={10} sm={8} md={5} lg={4}>
+    <Grid item spacing={5} xs={5} sm={3} md={2} lg={2}>
       <Grow in>
         <Card>
           <CardActionArea onClick={event => {onClick(event)}}>
             <CardContent>
-              <Typography  variant="h3">
+              <Typography align="center" variant="h5">
                 {title && title}
-              </Typography>
-              <Icon style={{fontSize: 100}}>{icon && icon}</Icon>
+                <br/>
+                <Icon style={{fontSize: 100}}>
+                  {icon && icon}
+                </Icon>
+              </Typography >
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Typography gutterBottom variant="h3" component="h2" >
+            <Typography gutterBottom variant="h5" >
               {count &&
               <NumericLabel params={{shortFormat:true}}>
                 {count}
@@ -37,5 +41,19 @@ const DataCard = (props) => {
     </Grid>
   );
 }
+
+DataCard.propTypes = {
+  title: PropTypes.string,
+  count: PropTypes.number,
+  icon: PropTypes.string,
+  onClick: PropTypes.func
+};
+
+DataCard.defaultProps = {
+  title: null,
+  count: null,
+  icon: null,
+  onClick: null
+};
 
 export default DataCard;

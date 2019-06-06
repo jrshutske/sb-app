@@ -8,31 +8,53 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Grow from '@material-ui/core/Grow';
+import { makeStyles } from '@material-ui/core/styles';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import nature from '../nature.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCode } from "@fortawesome/free-solid-svg-icons";
+
+const useStyles = makeStyles({
+  card: {
+    maxWidth: 800,
+  },
+  media: {
+    minHeight: 200,
+  },
+});
 
 export default function Home() {
-
+  const classes = useStyles();
     return (
       <React.Fragment>
-        <Grid container  spacing={2} justify="center">
-        <Link href={'/demo'} underline="none">
-        <Grow in>
-        <Card>
-          <CardActionArea>
-            <CardContent>
-              <Typography  variant="h3">
-                Demo
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-          <Typography  variant="">
-                demo for stealthbits
-              </Typography>
-          </CardActions>
-        </Card>
-      </Grow>
-        </Link>
-          </Grid>
-        </React.Fragment>
+        <Grid container spacing={2} justify="center">
+          <Grow in>
+            <Card className={classes.card}>
+              <CardActionArea>
+                <Link href={'/demo'} underline="none">
+                  <CardMedia
+                    className={classes.media}
+                    image={nature}
+                    title="Contemplative Reptile"
+                  />
+                  <CardContent>
+                    <Typography color="textSecondary">
+                      A simple react and material ui demo for StealthBits.
+                    </Typography>
+                  </CardContent>
+                </Link>
+              </CardActionArea>
+              <CardActions>
+                <Link href={'https://github.com/jrshutske'} target="_blank" underline="none">
+                  <Button size="small" color="primary">
+                    <FontAwesomeIcon icon={faCode} />
+                  </Button>
+                </Link>
+              </CardActions>
+            </Card>
+          </Grow>
+        </Grid>
+      </React.Fragment>
     );
 }

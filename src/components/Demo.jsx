@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
 import DemoTable from './DemoTable';
 import DataCard from './DataCard';
-import DraggableDialog from './DraggableDialog';
+import InfoDialog  from './InfoDialog ';
 import { ClipLoader } from 'react-spinners';
 
 const switchColumns = (type) => {
@@ -98,7 +98,7 @@ class Demo extends Component {
     let data;
     if (activeCard === "Computers") {data = computers}
     if (activeCard === "Users") {data = users}
-    console.log('render')
+    
     return (
       <React.Fragment>
         <Grid container  spacing={2} justify="center">
@@ -140,7 +140,7 @@ class Demo extends Component {
           />
         }
         { open && 
-          <DraggableDialog 
+          <InfoDialog 
             handleClose={this.handleClose} 
             open={open} 
             rowData={rowData}
