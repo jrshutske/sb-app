@@ -1,6 +1,6 @@
 ## STEALTHbits Demo Project
 
-This project was created for STEALTHbits to demonstrate a working knowledge of React.<br>
+This project was created for [STEALTHbits](https://www.stealthbits.com/) to demonstrate a working knowledge of React.<br>
 
 The goal was to create a single page react application that fetched data from a [swagger.io](https://swagger.io/) endpoint and display it to two tables.<br>
 
