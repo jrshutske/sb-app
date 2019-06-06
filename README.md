@@ -10,7 +10,8 @@ These tables were to have multiple features, such as: pagination, adjustable pag
 
 In the project directory, you can run:
 
-### `yarn start`
+### `yarn install` to install the dependencies
+### `yarn start` to run the project locally
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
