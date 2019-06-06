@@ -1,17 +1,19 @@
 ## STEALTHbits Demo Project
 
-This project was created for STEALTHbits to demonstrate a working knowledge of React.    
+This project was created for STEALTHbits to demonstrate a working knowledge of React.<br>
 
-The goal was to create a single page react application that fetched data from a [swagger.io](https://swagger.io/) endpoint and display it to two tables.    
+The goal was to create a single page react application that fetched data from a [swagger.io](https://swagger.io/) endpoint and display it to two tables.<br>
 
-These tables were to have multiple features, such as: pagination, adjustable page length, and the ability to click on a row to display more information.
+These tables were to have multiple features, such as: pagination, adjustable page length, and the ability to click on a row to display more information.<br>
 
 ## How to run this project
 
 In the project directory, you can run:
 
-### `yarn install` to install the dependencies
-### `yarn start` to run the project locally
+### `yarn install`
+Installs the various yarn dependencies.
+
+### `yarn start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
