@@ -14,7 +14,7 @@ import PropTypes from "prop-types";
 const DataCard = (props) => {
   const { title, count, icon, onClick } = props;
   return (
-    <Grid item spacing={5} xs={5} sm={3} md={2} lg={2}>
+    <Grid item xs={5} sm={3} md={2} lg={2}>
       <Grow in>
         <Card>
           <CardActionArea onClick={event => {onClick(event)}}>
