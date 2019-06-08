@@ -1,6 +1,4 @@
 import './App.css';
-import Home from "./components/Home";
-import Demo from "./components/Demo";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -10,6 +8,8 @@ import deepPurple from '@material-ui/core/colors/deepPurple';
 import { ThemeProvider } from '@material-ui/styles';
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Demo from "./components/Demo";
+import Home from "./components/Home";
 
 const theme = createMuiTheme({
   palette: {
@@ -23,7 +23,7 @@ const theme = createMuiTheme({
 function App() {
   return (
     <Router>
-       <link
+      <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
       />
@@ -34,7 +34,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <AppBar position="static" color="primary">
           <Toolbar>
-          <Typography variant="h6" color="inherit">
+            <Typography variant="h6" color="inherit">
               <Link to="/" style={{ textDecoration: 'none', color: 'white'}}>
                 Home
               </Link>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -17,59 +17,46 @@ function PaperComponent(props) {
   );
 }
 
-class InfoDialog  extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      open: null,
-      rowData: null
-    };
-  }
+export default function InfoDialog(props) {
 
-  componentDidMount() {
-    this.setState({
-      open: this.props.open,
-      rowData: this.props.rowData
-    })
-  }
-
-  render() {
-    const {open, rowData, handleClose} = this.props;    
-    const data = Object.entries(rowData).map(([key,value])=>{
-      return (
-        key !== "tableData" && 
-        <React.Fragment key={key}>
-          {key} : {value} <br />
-        </React.Fragment>
-      );
-    })
-    
-    return (
-      <React.Fragment>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          PaperComponent={PaperComponent}
-          aria-labelledby="draggable-dialog-title"
-        >
-          <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
-            {rowData.displayname}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              {data}
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Cancel
-            </Button>
-          </DialogActions>
-        </Dialog>
+  const {open, rowData, handleClose} = props;
+  const data = Object.entries(rowData).map(([key,value])=>(
+      key !== "tableData" && (
+      <React.Fragment key={key}>
+        {key.replace(/([A-Z])/g, ' $1').replace(/^./, (str)=>str.toUpperCase())}
+        {': '}
+        {value}
+        <br />
       </React.Fragment>
-    );
-  }
+    )
+  ))
+
+  return (
+    <React.Fragment>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        PaperComponent={PaperComponent}
+        aria-labelledby="draggable-dialog-title"
+      >
+        <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
+          {rowData.displayname}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            {data}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </React.Fragment>
+  );
 }
+
 
 InfoDialog.propTypes = {
   open: PropTypes.bool,
@@ -82,5 +69,3 @@ InfoDialog.defaultProps = {
   rowData: null,
   handleClose: null
 };
-
-export default InfoDialog ;

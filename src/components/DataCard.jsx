@@ -11,7 +11,7 @@ import NumericLabel from 'react-pretty-numbers';
 import Grow from "@material-ui/core/Grow";
 import PropTypes from "prop-types";
 
-const DataCard = (props) => {
+export default function DataCard(props) {
   const { title, count, icon, onClick } = props;
   return (
     <Grid item xs={5} sm={3} md={2} lg={2}>
@@ -21,19 +21,20 @@ const DataCard = (props) => {
             <CardContent>
               <Typography align="center" variant="h5">
                 {title && title}
-                <br/>
+                <br />
                 <Icon style={{fontSize: 100}}>
                   {icon && icon}
                 </Icon>
-              </Typography >
+              </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Typography gutterBottom variant="h5" >
-              {count &&
+            <Typography gutterBottom variant="h5">
+              {count && (
               <NumericLabel params={{shortFormat:true}}>
                 {count}
-              </NumericLabel>}
+              </NumericLabel>
+              )}
             </Typography>
           </CardActions>
         </Card>
@@ -55,5 +56,3 @@ DataCard.defaultProps = {
   icon: null,
   onClick: null
 };
-
-export default DataCard;
