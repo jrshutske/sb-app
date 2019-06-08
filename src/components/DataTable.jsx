@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Grow from "@material-ui/core/Grow";
 import PropTypes from "prop-types";
 
-export default function DemoTable(props) {
+export default function DataTable(props) {
   const { activeCard, columns, data } = props;
 
   const onRowClick = (e) => {
@@ -30,14 +30,14 @@ export default function DemoTable(props) {
   );
 }
 
-DemoTable.propTypes = {
+DataTable.propTypes = {
   loadDemoData: PropTypes.func,
   activeCard: PropTypes.string,
   columns: PropTypes.arrayOf(PropTypes.object),
   data: PropTypes.arrayOf(PropTypes.object)
 };
 
-DemoTable.defaultProps = {
+DataTable.defaultProps = {
   loadDemoData: null,
   activeCard: null,
   columns: null,

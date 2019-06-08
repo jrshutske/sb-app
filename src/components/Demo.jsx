@@ -2,9 +2,9 @@ import '../App.css';
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
 import { ClipLoader } from 'react-spinners';
-import DemoTable from './DemoTable';
+import DataTable from './DataTable';
 import DataCard from './DataCard';
-import InfoDialog  from './InfoDialog ';
+import InfoDialog from './InfoDialog';
 
 const switchColumns = (type) => {
   switch(type) {
@@ -130,7 +130,7 @@ class Demo extends Component {
           {cards}
         </Grid>
         { activeCard && (
-          <DemoTable
+          <DataTable
             columns={columns}
             activeCard={activeCard}
             data={data}
